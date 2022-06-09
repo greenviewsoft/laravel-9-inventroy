@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Pos\SupplierController;
+use App\Http\Controllers\Pos\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,14 +24,22 @@ Route::post('/update/password', 'UpdatePassword')->name('update.password');
 
 
 
-//admin all route
+//supplier all route
 Route::controller(SupplierController::class)->group(function (){
 Route::get('/supplier/all', 'SuppplierAll')->name('supliers.all');
 Route::get('/supplier/add', 'SuppplierAdd')->name('supllier.add');
 Route::post('/supplier/store', 'SuppplierStore')->name('supplier.store');
-Route::post('/supplier/edit/{id}', 'SuppplierEddit')->name('supplier.edit');
+Route::get('/supplier/edit/{id}', 'SuppplierEddit')->name('supplier.edit');
+Route::post('/supplier/update/', 'SuppplierUpdate')->name('supplier.update');
+Route::get('/supplier/delete/{id}', 'SupplierDelete')->name('supplier.delete');
+
+});
 
 
+//Customer all route
+Route::controller(CustomerController::class)->group(function (){
+Route::get('/customer/all', 'CustomerAll')->name('customer.all');
+Route::post('/customer/add', 'CustomerAdd')->name('customer.add');
 
 
 

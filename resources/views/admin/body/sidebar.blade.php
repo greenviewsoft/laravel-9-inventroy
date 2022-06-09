@@ -31,6 +31,18 @@
         </ul>
     </li>
 
+  <li>
+        <a href="javascript: void(0);" class="has-arrow waves-effect">
+            <i class="ri-mail-send-line"></i>
+            <span>Mange Customer</span>
+        </a>
+        <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ route('customer.all') }}">All Customer</a></li>
+          
+        </ul>
+    </li>
+
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-layout-3-line"></i>
