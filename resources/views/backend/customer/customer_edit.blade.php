@@ -10,17 +10,18 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="card-title">Add Customer Page </h4><br><br>
+            <h4 class="card-title">Edit Customer Page </h4><br><br>
 
 
 
-            <form method="post" action="{{ route('customer.store') }}" id="myForm"  enctype="multipart/form-data"> 
+    <form method="post" action="{{ route('customer.update') }}" id="myForm" enctype="multipart/form-data" >
                 @csrf
 
+            <input type="hidden" name="id" value="{{ $customer->id }}">
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Name </label>
                 <div class="form-group col-sm-10">
-                    <input name="name" class="form-control" type="text"    >
+                    <input name="name" value="{{ $customer->name }}" class="form-control" type="text"    >
                 </div>
             </div>
             <!-- end row -->
@@ -29,7 +30,7 @@
               <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Mobile </label>
                 <div class="form-group col-sm-10">
-                    <input name="mobile_no" class="form-control" type="text"    >
+                    <input name="mobile_no"  value="{{ $customer->mobile_no }}" class="form-control" type="text"    >
                 </div>
             </div>
             <!-- end row -->
@@ -38,7 +39,7 @@
   <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Email </label>
                 <div class="form-group col-sm-10">
-                    <input name="email" class="form-control" type="email"  >
+                    <input name="email"  value="{{ $customer->email }}" class="form-control" type="email"  >
                 </div>
             </div>
             <!-- end row -->
@@ -47,7 +48,7 @@
   <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Address </label>
                 <div class="form-group col-sm-10">
-                    <input name="address" class="form-control" type="text"  >
+                    <input name="address" value="{{ $customer->address }}" class="form-control" type="text"  >
                 </div>
             </div>
             <!-- end row -->
@@ -63,7 +64,7 @@
               <div class="row mb-3">
                  <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                 <div class="col-sm-10">
-   <img id="showImage" class="rounded avatar-lg" src="{{  url('upload/no_image.jpg') }}" alt="Card image cap">
+   <img id="showImage" class="rounded avatar-lg" src="{{ asset($customer->customer_image) }}" alt="Card image cap">
                 </div>
             </div>
             <!-- end row -->
@@ -72,7 +73,7 @@
 
 
 
-<input type="submit" class="btn btn-info waves-effect waves-light" value="Add Customer">
+<input type="submit" class="btn btn-info waves-effect waves-light" value="Update Customer">
             </form>
 
 
@@ -103,9 +104,7 @@
                  address: {
                     required : true,
                 },
-                 customer_image: {
-                    required : true,
-                },
+                 
             },
             messages :{
                 name: {
@@ -120,9 +119,7 @@
                 address: {
                     required : 'Please Enter Your Address',
                 },
-                 customer_image: {
-                    required : 'Please Select one Image',
-                },
+                 
             },
             errorElement : 'span', 
             errorPlacement: function (error,element) {
