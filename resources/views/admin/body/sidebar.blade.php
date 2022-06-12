@@ -80,11 +80,11 @@
     <li>
         <a href="javascript: void(0);" class="has-arrow waves-effect">
             <i class="ri-mail-send-line"></i>
-            <span>Mange Purchased</span>
+            <span>Mange Purchase</span>
         </a>
         <ul class="sub-menu" aria-expanded="false">
-            <li><a href="{{ route('purchased.all') }}">All Purchased</a></li>
-          
+            <li><a href="{{ route('purchased.all') }}">All Purchase</a></li>
+            <li><a href="{{ route('purchase.pending') }}">Aproval Purchase</a></li>
         </ul>
     </li>
 

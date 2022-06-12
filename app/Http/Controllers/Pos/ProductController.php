@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Supllier;
+use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function ProductAdd(){
 
-        $supplier = Supllier::all();
+        $supplier = Supplier::all();
         $category = Category::all();
         $unit = Unit::all();
         return view('backend.product.product_add',compact('supplier','category','unit'));
@@ -52,7 +52,7 @@ class ProductController extends Controller
 
     public function ProductEdit($id){
 
-        $supplier = Supllier::all();
+        $supplier = Supplier::all();
         $category = Category::all();
         $unit = Unit::all();
         $product = Product::findOrFail($id);

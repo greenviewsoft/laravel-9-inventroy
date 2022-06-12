@@ -43,7 +43,7 @@
 
                         <tbody>
                         	
-                        	@foreach($supllier as $key =>  $item)
+                        	@foreach($ssbd as $key =>  $item)
                         <tr>
                             <td> {{ $key+1}} </td>
                             <td> {{ $item->name }} </td>  

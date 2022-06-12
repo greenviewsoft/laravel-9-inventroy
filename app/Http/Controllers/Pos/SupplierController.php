@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Pos;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Supllier;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 
@@ -14,9 +14,9 @@ class SupplierController extends Controller
 
 // $supllier = Supllier::all();
 
-$supllier = Supllier::latest()->get();
+$ssbd = Supplier::latest()->get();
 
-return view('backend.supplier.supplier_all',compact('supllier'));
+return view('backend.supplier.supplier_all',compact('ssbd'));
 
     }// end method
 
@@ -34,7 +34,7 @@ return view('backend.supplier.supplier_add');
 
 public function SuppplierStore(Request $request){
 
-        Supllier::insert([
+    Supplier::insert([
             'name' => $request->name,
             'mobile_no' => $request->mobile_no,
             'email' => $request->email,
@@ -56,7 +56,7 @@ public function SuppplierStore(Request $request){
 
 public function SuppplierEddit($id){
 
-$supllier = Supllier::findOrFail($id);
+$supllier = Supplier::findOrFail($id);
 return view('backend.supplier.supplier_edit',compact('supllier'));
 
 
@@ -67,7 +67,7 @@ public function SuppplierUpdate(Request $request){
 
 $supplier_id = $request->id;
 
-   Supllier::findOrFail($supplier_id)->update([
+Supplier::findOrFail($supplier_id)->update([
             'name' => $request->name,
             'mobile_no' => $request->mobile_no,
             'email' => $request->email,
@@ -92,7 +92,7 @@ $supplier_id = $request->id;
 
  public function SupplierDelete($id){
 
-      Supllier::findOrFail($id)->delete();
+    Supplier::findOrFail($id)->delete();
 
        $notification = array(
             'message' => 'Supplier Deleted Successfully', 
