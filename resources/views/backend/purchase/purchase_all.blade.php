@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <a href="{{ route('purchase.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;">Add Purchase </a> <br>  <br>        
+                    <a href="{{ route('purchase.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Add Purchase </i></a> <br>  <br>        
 
                     <h4 class="card-title">Purchase All Data </h4>
 
@@ -50,11 +50,12 @@
             <tr>
                 <td> {{ $key+1}} </td>
                 <td> {{ $item->purchase_no }} </td> 
-                <td> {{ date('d-m-Y',strtotime($item->date))  }} </td> 
-                 <td> {{ $item['supplier']['name'] }} </td> 
-                 <td> {{ $item['category']['name'] }} </td>  
+                <td> {{ date('d-m-Y',strtotime($item->date))  }} </td>
+
+                 <td> {{ $item->supplier_id }} </td> 
+                 <td> {{ $item->category_id }} </td>  
                  <td> {{ $item->buying_qty }} </td> 
-                 <td> {{ $item['product']['name'] }} </td> 
+                 <td> {{ $item->product_id }} </td> 
                  
                  
                  <td>

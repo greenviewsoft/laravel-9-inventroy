@@ -106,7 +106,7 @@ class PurchaseController extends Controller
               );
         return redirect()->route('purchased.all')->with($notification); 
     
-            }
+        }
     
         }// End Method 
 }

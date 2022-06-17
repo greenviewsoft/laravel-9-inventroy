@@ -8,7 +8,9 @@ use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\PurchaseController;
+use App\Http\Controllers\Pos\InvoiceController;
 use App\Http\Controllers\Pos\DefaultController;
+ 
 
 Route::get('/', function () {
     return view('welcome');
@@ -100,8 +102,15 @@ Route::controller(ProductController::class)->group(function () {
     });
 
 
+    // Invoice Routes
+    Route::controller(InvoiceController::class)->group(function () {
+        Route::get('/invoice/all', 'InvoiceAll')->name('invoice.all'); 
+        Route::get('/invoice/add', 'InvoiceAdd')->name('invoice.add'); 
+    });
 
-    // Defulat  All Route 
+
+
+    // Default  All Route 
     Route::controller(DefaultController::class)->group(function () {
         Route::get('/get-category', 'GetCategory')->name('get-category'); 
         Route::get('/get-product', 'GetProduct')->name('get-product');

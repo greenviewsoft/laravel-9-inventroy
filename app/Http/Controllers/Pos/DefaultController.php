@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Purchase;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Supllier;
+use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
