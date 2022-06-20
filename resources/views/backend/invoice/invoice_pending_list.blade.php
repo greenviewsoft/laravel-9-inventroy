@@ -36,9 +36,10 @@
                             <th>Invoice Number </th>
                             <th>Date</th>
                             <th>Description</th> 
-                            <th>Paid Amount</th> 
-                            <th> Due Amount</th> 
+                            <th>Paid Aount</th> 
+                            <th>due Amount</th> 
                             <th>Total Amount</th> 
+                            <th>Status</th> 
                             <th>Action</th>
 
                         </thead>
@@ -57,10 +58,21 @@
                 <td> TK {{ $item['payment']['paid_amount'] }} </td> 
                 <td> TK {{ $item['payment']['due_amount'] }} </td> 
                 <td> TK {{ $item['payment']['total_amount'] }} </td> 
-                
+
+                <td>  @if($item->status == '0')
+                    <span class="btn btn-warning"> Pending</span> 
+                 @elseif($item->status == '1')
+                 <span class="btn btn-success">Aproved</span>
+                @endif </td> 
                 <td> 
                    
-<a href="{{ route('purchase.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                    @if($item->status == '0')
+                    <a href="{{ route('purchase.delete',$item->id) }}" class="btn btn-success sm" title="Aproved Data" >  <i class="fas fa-check-circle"></i> </a>
+                    @endif
+
+                    @if($item->status == '0')
+                    <a href="{{ route('invoice.delete',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                    @endif
 
                 </td>
 

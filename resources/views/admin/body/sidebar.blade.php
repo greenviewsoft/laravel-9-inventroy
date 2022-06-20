@@ -96,7 +96,7 @@
         </a>
         <ul class="sub-menu" aria-expanded="false">
             <li><a href="{{ route('invoice.all') }}">All Invoice</a></li>
-            <li><a href="">Aproval Invoice</a></li>
+            <li><a href="{{ route('invoice.pending.list') }}">Aproval Invoice</a></li>
         </ul>
     </li>
 

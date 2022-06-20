@@ -52,10 +52,17 @@
                 <td> {{ $item->purchase_no }} </td> 
                 <td> {{ date('d-m-Y',strtotime($item->date))  }} </td>
 
-                 <td> {{ $item->supplier_id }} </td> 
+
+                <td> {{ $item['supplier']['name'] }} </td> 
+                <td> {{ $item['category']['name'] }} </td> 
+                <td> {{ $item->buying_qty }} </td> 
+                <td> {{ $item['product']['name'] }} </td> 
+
+
+                 {{-- <td> {{ $item->supplier_id }} </td> 
                  <td> {{ $item->category_id }} </td>  
                  <td> {{ $item->buying_qty }} </td> 
-                 <td> {{ $item->product_id }} </td> 
+                 <td> {{ $item->product_id }} </td>  --}}
                  
                  
                  <td>
