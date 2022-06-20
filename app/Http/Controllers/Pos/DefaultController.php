@@ -40,7 +40,7 @@ public function GetStock(Request $request){
     $stock = Product::where('id',$product_id)->first()->quantity;
     return response()->json($stock);
 
-} // End method 
+} // End Method 
 
 
 }

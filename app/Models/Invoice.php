@@ -9,4 +9,9 @@ class Invoice extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function payment(){
+        return $this->belongsTo(payment::class,'id','invoice_id');
+    }
+ 
 }

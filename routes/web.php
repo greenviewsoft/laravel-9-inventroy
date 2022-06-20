@@ -106,6 +106,7 @@ Route::controller(ProductController::class)->group(function () {
     Route::controller(InvoiceController::class)->group(function () {
         Route::get('/invoice/all', 'InvoiceAll')->name('invoice.all'); 
         Route::get('/invoice/add', 'InvoiceAdd')->name('invoice.add'); 
+        Route::post('/invoice/store', 'InvoiceStore')->name('invoice.store'); 
     });
 
 
@@ -115,6 +116,7 @@ Route::controller(ProductController::class)->group(function () {
         Route::get('/get-category', 'GetCategory')->name('get-category'); 
         Route::get('/get-product', 'GetProduct')->name('get-product');
         Route::get('/check-product', 'GetStock')->name('check-product-stock'); 
+        
 
 
      
