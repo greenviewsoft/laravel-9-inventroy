@@ -67,7 +67,7 @@
                 <td> 
                    
                     @if($item->status == '0')
-                    <a href="{{ route('purchase.delete',$item->id) }}" class="btn btn-success sm" title="Aproved Data" >  <i class="fas fa-check-circle"></i> </a>
+                    <a href="{{ route('invoice.approve',$item->id) }}" class="btn btn-dark sm" title="Approved Data" >  <i class="fas fa-check-circle"></i> </a>
                     @endif
 
                     @if($item->status == '0')

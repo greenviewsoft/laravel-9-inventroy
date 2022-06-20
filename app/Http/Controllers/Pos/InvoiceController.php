@@ -174,5 +174,14 @@ public function InvoiceDelete($id){
 
 }// End Method  
 
+public function InvoiceApprove($id){
+    $invoice = Invoice::with('Invoice_Details')->findOrFail($id);
+
+    return view('backend.invoice.invoice_approve',compact('invoice'));
+
+    
+    }// End Method
+
+
 
 } 
