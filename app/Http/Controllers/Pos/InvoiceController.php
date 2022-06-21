@@ -20,6 +20,7 @@ use App\Models\Customer;
 use Illuminate\Contracts\View\View;
 
 use function GuzzleHttp\Promise\all;
+use function GuzzleHttp\Promise\queue;
 
 class InvoiceController extends Controller
 {
@@ -181,6 +182,49 @@ public function InvoiceApprove($id){
 
     
     }// End Method
+    
+
+    public function ApprovalStore(Request $request, $id){
+
+        foreach($request->selling_qty as $key => $val){
+$invoice_details = InvoiceDetail::where('id',$key)->first();
+$product = Product::where('id',$invoice_details->product_id)->first();
+if($product->quantity <$request->selling_qty[$key]){
+
+
+    $notification = array(
+        'message' => 'দুঃখিত স্টক চেক করুন  ', 
+        'alert-type' => 'error'
+    );
+
+    return redirect()->back()->with($notification);
+
+}
+        }// foreach
+
+
+$invoice = Invoice::findOrFail($id);
+$invoice->updated_by = Auth::user()->id;
+$invoice->status = '1';
+DB::transaction(function() use($request,$invoice,$id){
+foreach($request->selling_qty as $key => $val){
+    $invoice_details = InvoiceDetail::where('id',$key)->first();
+    $product  = Product::where('id',$invoice_details->product_id)->first();
+    $product->quantity = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
+    $product->save();
+} //end foreach
+
+$invoice->save();
+
+});
+
+$notification = array(
+    'message' => 'Invoice Approve Successfully', 
+    'alert-type' => 'success'
+);
+return redirect()->route('invoice.pending.list')->with($notification);  
+
+    } // End Method
 
 
 

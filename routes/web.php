@@ -111,6 +111,7 @@ Route::controller(ProductController::class)->group(function () {
         Route::get('/invoice/pending', 'InvoicePending')->name('invoice.pending.list'); 
         Route::get('/invoice/delete/{id}', 'InvoiceDelete')->name('invoice.delete'); 
         Route::get('/invoice/approve/{id}', 'InvoiceApprove')->name('invoice.approve'); 
+        Route::post('/approval/store/{id}', 'ApprovalStore')->name('approval.store');
     
     });
 
