@@ -10,6 +10,7 @@ use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\PurchaseController;
 use App\Http\Controllers\Pos\InvoiceController;
 use App\Http\Controllers\Pos\DefaultController;
+use App\Http\Controllers\Pos\StockController;
  
 
 Route::get('/', function () {
@@ -123,8 +124,9 @@ Route::controller(ProductController::class)->group(function () {
 
 
     // Stock Routes
-    Route::controller(InvoiceController::class)->group(function () {
-        Route::get('/invoice/all', 'InvoiceAll')->name('invoice.all'); 
+    Route::controller(StockController::class)->group(function () {
+        Route::get('/stock/report', 'StockReport')->name('stock.report'); 
+        Route::get('/stock/report/pdf', 'StockReportPdf')->name('stock.report.pdf'); 
  
 
     });
