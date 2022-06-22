@@ -12,7 +12,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="/dashboard" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>
@@ -97,6 +97,7 @@
         <ul class="sub-menu" aria-expanded="false">
             <li><a href="{{ route('invoice.all') }}">All Invoice</a></li>
             <li><a href="{{ route('invoice.pending.list') }}">Aproval Invoice</a></li>
+            <li><a href="{{ route('print.invoice.list') }}">Print Invoice</a></li>
         </ul>
     </li>
 

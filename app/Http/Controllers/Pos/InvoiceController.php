@@ -177,7 +177,6 @@ public function InvoiceDelete($id){
 
 public function InvoiceApprove($id){
     $invoice = Invoice::with('Invoice_Details')->findOrFail($id);
-
     return view('backend.invoice.invoice_approve',compact('invoice'));
 
     
@@ -227,5 +226,24 @@ return redirect()->route('invoice.pending.list')->with($notification);
     } // End Method
 
 
+
+
+    public function PrintInvoiceList(){
+        $allData =Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
+        return view('backend.invoice.print_invoice_list',compact('allData'));
+
+
+
+    }// End Method PrintInvoice
+
+
+
+
+    public function PrintInvoice($id){
+
+        $invoice = Invoice::with('Invoice_Details')->findOrFail($id);
+        return view('backend.pdf.invoice_pdf',compact('invoice'));
+    
+    }// End Method
 
 } 
