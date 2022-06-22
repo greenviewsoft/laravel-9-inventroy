@@ -114,6 +114,18 @@ Route::controller(ProductController::class)->group(function () {
         Route::post('/approval/store/{id}', 'ApprovalStore')->name('approval.store');
         Route::get('/print/invoice/list', 'PrintInvoiceList')->name('print.invoice.list');
         Route::get('/print/invoice/{id}', 'PrintInvoice')->name('print.invoice');
+        Route::get('/daily/invoice/report', 'DailyInvoiceReport')->name('daily.invoice.report');
+        Route::get('/daily/invoice/pdf', 'DailyInvoicePdf')->name('daily.invoice.pdf');
+
+    });
+
+
+
+
+    // Stock Routes
+    Route::controller(InvoiceController::class)->group(function () {
+        Route::get('/invoice/all', 'InvoiceAll')->name('invoice.all'); 
+ 
 
     });
 

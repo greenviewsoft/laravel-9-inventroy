@@ -97,23 +97,23 @@ $total_sum = '0';
        @endforeach
 <tr>  
     <td colspan="6"> Sub Total: </td>
-    <td>Tk {{ $total_sum }}</td>
+    <td>৳{{ $total_sum }}</td>
 </tr>
 <tr>  
     <td colspan="6"> Discount </td>
-    <td>Tk {{ $payment->discount_amount }}</td>
+    <td>৳{{ $payment->discount_amount }}</td>
 </tr>
 <tr>  
     <td colspan="6"> Paid Amount </td>
-    <td>Tk {{ $payment->paid_amount }}</td>
+    <td>৳{{ $payment->paid_amount }}</td>
 </tr>
 <tr>  
     <td colspan="6"> Due Amount </td>
-    <td>Tk {{ $payment->due_amount }}</td>
+    <td>৳{{ $payment->due_amount }}</td>
 </tr>
 <tr>  
     <td colspan="6"> Grand Amount </td>
-    <td>Tk {{ $payment->total_amount}}</td>
+    <td>৳{{ $payment->total_amount}}</td>
 </tr>
 
    </tbody>

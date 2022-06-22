@@ -18,9 +18,12 @@ use App\Models\payment;
 use App\Models\paymentDetail;
 use App\Models\Customer;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\View as FacadesView;
 
 use function GuzzleHttp\Promise\all;
 use function GuzzleHttp\Promise\queue;
+use function Ramsey\Uuid\v1;
 
 class InvoiceController extends Controller
 {
@@ -246,4 +249,28 @@ return redirect()->route('invoice.pending.list')->with($notification);
     
     }// End Method
 
-} 
+
+
+    public function DailyInvoiceReport(){
+return View('backend.invoice.daily_invoice_report');
+
+    }// End Method
+
+    public function DailyInvoicePdf(Request $request){
+
+$sdate =    date('Y-m-d',strtotime($request->start_date));
+$edate =    date('Y-m-d',strtotime($request->end_date));
+
+$allData = Invoice::whereBetween('date',[$sdate,$edate])->where('status', '1')->get();
+
+$start_date = date('Y-m-d',strtotime($request->start_date));
+$end_date = date('Y-m-d',strtotime($request->end_date));
+
+
+
+return view('backend.pdf.daily_invoice_report_pdf',compact('allData','start_date','end_date'));
+
+}// End Method
+
+
+}
