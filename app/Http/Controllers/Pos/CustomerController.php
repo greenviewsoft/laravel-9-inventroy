@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Pos;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image As Image;
 
-
+use function GuzzleHttp\Promise\all;
 
 class CustomerController extends Controller
 {
@@ -145,5 +148,21 @@ public function CustomerStore(Request $request){
         return redirect()->back()->with($notification);
 
     } // End Method
+
+
+    public function CreditCustomer(){
+
+   $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+        return view('backend.customer.customer_credit',compact('allData'));
+
+    }// End Method
+
+
+    public function CreditCustomerPdf(){
+
+        $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+        return view('backend.pdf.customer_credit_pdf',compact('allData'));
+
+    }// End Method
 
   }
