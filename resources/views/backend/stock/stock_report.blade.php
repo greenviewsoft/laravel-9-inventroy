@@ -7,12 +7,12 @@
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">Stock All</h4>
-                                     
+
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
-                        
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -30,10 +30,10 @@
                             <th>Product Name</th> 
                             <th>Unit</th>
                             <th>Stock</th>
-                            
+
                         </thead>
                         <tbody>
-                        	 
+
                         	@foreach($calldata as $key => $item)
                         <tr>
                             <td> {{ $key+1}} </td>
@@ -45,18 +45,18 @@
 
                         </tr>
                         @endforeach
-                        
+
                         </tbody>
                     </table>
-        
+
                                     </div>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-        
-                     
-                        
+
+
+
                     </div> <!-- container-fluid -->
                 </div>
- 
-@endsection
+
+@endsection 

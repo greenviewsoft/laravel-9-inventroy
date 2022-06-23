@@ -12,6 +12,8 @@ use GuzzleHttp\Handler\Proxy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redis;
+use Whoops\Run;
 
 class StockController extends Controller
 {
@@ -34,6 +36,32 @@ public function StockReportPdf(){
 
 
 }//end method
+
+
+public function stockSupplierWise() {
+    $suppliers = Supplier::all();
+    $category = Category::all();
+
+    return View('backend.stock.supplier_product_wise_report',compact('suppliers', 'category'));
+}//end method
+
+
+public function stockSupplierWisePdf(Request $request){
+
+    $allData = Product::orderBy('supplier_id','asc')->orderBy('category_id',
+    'asc')->where('supplier_id',$request->supplier_id)->get();
+    return View('backend.pdf.supplier_wise_report_pdf',compact('allData'));
+
+}//end method
+
+
+public function ProductWisePdf(Request $request){
+
+    $product = Product::where('category_id',$request->category_id)->where('id',$request->product_id)->first();
+    return view('backend.pdf.product_wise_report_pdf',compact('product'));
+
+}//end method
+
 
 
 }
