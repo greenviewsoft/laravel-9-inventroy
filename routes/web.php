@@ -61,6 +61,10 @@ Route::get('/customer/delete/{id}', 'CustomerDelete')->name('customer.delete');
 
 Route::get('/credit/customer/', 'CreditCustomer')->name('credit.customer');
 Route::get('/credit/customer/pdf', 'CreditCustomerPdf')->name('credit.customer.pdf');
+Route::get('/customer/edit/invoice/{invoice_id}', 'CustomerEditInvoice')->name('customer.edit.invoice');
+Route::post('/customer/update/invoice/{invoice_id}', 'CustomerUpdateInvoice')->name('customer.update.invoice');
+Route::get('/customer/invoice/details/{invoice_id}', 'CustomerInvoiceDetails')->name('customer.invoice.details.pdf');
+
 
 
 });
