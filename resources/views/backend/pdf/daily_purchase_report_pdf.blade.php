@@ -32,7 +32,7 @@
             <div class="invoice-title">
 
                 <h3>
-                    <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo" height="24"/> Green Tech Mall
+                    <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo" height="24"/> GreenViewSoft
                 </h3>
             </div>
             <hr>
@@ -40,9 +40,9 @@
             <div class="row">
                 <div class="col-6 mt-4">
                     <address>
-                        <strong>Green Tech Mall</strong><br>
+                        <strong>GreenViewSoft</strong><br>
                         Mohammadpur Dhaka<br>
-                        support@Greenviewit.com
+                        support@GreenViewSoft.com
                     </address>
                 </div>
                 <div class="col-6 mt-4 text-end">

@@ -8,7 +8,7 @@ use App\Models\Customer;
 use App\Models\payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\PaymentDetail;
 
 use Illuminate\Support\Carbon;
@@ -25,6 +25,7 @@ public function CustomerAll(){
 
 // $customers = Customer::all();
 
+// All Customer List Data 
 $customers = Customer::latest()->get();
 
 return view('backend.customer.customer_all',compact('customers'));
@@ -32,6 +33,17 @@ return view('backend.customer.customer_all',compact('customers'));
 }// Method p
 
 
+// All Customer List
+// public function Customerlist(){
+
+//        $hellodata =Customer::all();
+
+// return view('admin.index',compact('hellodata'));
+
+// }// Method p
+
+
+// Customer Add method
 public function CustomerAdd(Request $request){
 
 
@@ -40,6 +52,8 @@ public function CustomerAdd(Request $request){
 
 }// end method
 
+
+// Customer Store method
 public function CustomerStore(Request $request){
 
         $image = $request->file('customer_image');
@@ -67,7 +81,7 @@ public function CustomerStore(Request $request){
 
     } // End Method
 
-    
+    // Customer Edit method
     public function CustomerEdit($id){
 
        $customer = Customer::findOrFail($id);
@@ -77,7 +91,7 @@ public function CustomerStore(Request $request){
 
 
 
-
+// Customer Update method
     public function CustomerUpdate(Request $request){
 
        $customer_id = $request->id;
@@ -135,6 +149,8 @@ public function CustomerStore(Request $request){
 
       }// end method
 
+
+      // Customer Delete method
       public function CustomerDelete($id){
 
         $customers = Customer::findOrFail($id);
@@ -153,22 +169,28 @@ public function CustomerStore(Request $request){
     } // End Method
 
 
+
+    // Customer All Credit Customer 
     public function CreditCustomer(){
 
-   $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+            $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
         return view('backend.customer.customer_credit',compact('allData'));
 
     }// End Method
 
 
+
+    // Customer Credit Customer
     public function CreditCustomerPdf(){
 
-        $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+         $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
         return view('backend.pdf.customer_credit_pdf',compact('allData'));
 
     }// End Method
 
 
+
+    //  Customer Invoice edit
     public function CustomerEditInvoice($invoice_id){
 
         $payment = Payment::where('invoice_id',$invoice_id)->first();
@@ -177,7 +199,7 @@ public function CustomerStore(Request $request){
     }// End Method
 
 
-
+//CustomerInvoiceDetails  Update
     public function CustomerUpdateInvoice(Request $request,$invoice_id){
 
         if ($request->new_paid_amount < $request->paid_amount) {
@@ -222,13 +244,59 @@ public function CustomerStore(Request $request){
 
     }// End Method
 
-
+//All CustomerInvoiceDetails
     public function CustomerInvoiceDetails($invoice_id){
 
         $payment = Payment::where('invoice_id',$invoice_id)->first();
         return view('backend.pdf.invoice_details_pdf',compact('payment'));
 
     }// End Method
+
+
+
+//All Paid Customer List
+
+public function PaidCustomer(){
+
+
+
+     $allData = Payment::where('paid_status','!=' ,'full_due')->get();
+return view('backend.customer.customer_paid',compact('allData'));
+}// End Method
+
+
+
+
+public function PaidPrintPdf(){
+$allData = Payment::where('paid_status','!=' ,'full_due')->get();
+return view('backend.pdf.customer_paid_pdf',compact('allData'));
+
+}// End Method
+
+
+public function CustomerWiseReport(){
+
+    $customers = Customer::all();
+    return view('backend.customer.customer_wise_report',compact('customers'));
+
+}// End Method
+
+
+public function CustomerWiseCreditReport(Request $request){
+
+    $allData = Payment::where('customer_id',$request->customer_id)->whereIn('paid_status',['full_due','partial_paid'])->get();
+    return view('backend.pdf.customer_wise_credit_pdf',compact('allData'));
+
+}// End Method
+
+
+public function CustomerWisePaidReport(Request $request){
+
+    $allData = Payment::where('customer_id',$request->customer_id)->where('paid_status','!=' ,'full_due')->get();
+    return view('backend.pdf.customer_wise_paid_pdf',compact('allData'));
+
+}// End Method
+
 
 
 
@@ -240,6 +308,10 @@ public function CustomerStore(Request $request){
 
 
 }
+
+
+
+
 
 
   

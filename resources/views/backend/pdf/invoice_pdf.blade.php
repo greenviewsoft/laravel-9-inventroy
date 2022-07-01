@@ -40,9 +40,9 @@
             <div class="row">
                 <div class="col-6 mt-4">
                     <address>
-                        <strong>Green Tech Mall</strong><br>
+                        <strong>Green View Soft</strong><br>
                        Mohammadpur Dhaka<br>
-                        support@Greenviewit.com
+                        support@Greenviewsoft.com
                     </address>
                 </div>
                 <div class="col-6 mt-4 text-end">
@@ -203,7 +203,7 @@
                     <div class="d-print-none">
                         <div class="float-end">
                             <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
-                            <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
+                            <a href="{{ route('customer.paid.pdf_gen') }}" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
                         </div>
                     </div>
                 </div>

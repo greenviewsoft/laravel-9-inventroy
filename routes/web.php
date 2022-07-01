@@ -11,7 +11,8 @@ use App\Http\Controllers\Pos\PurchaseController;
 use App\Http\Controllers\Pos\InvoiceController;
 use App\Http\Controllers\Pos\DefaultController;
 use App\Http\Controllers\Pos\StockController;
- 
+use App\Http\Controllers\PDFController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,8 +21,13 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function (){
 
 
+//PDF Download Route
+Route::get('download-pdf', [PDFController::class, 'DownloadPDF']);
+Route::get('download-credit', [PDFController::class, 'DownloadCredit']);
 
-
+    
+    
+    
 
 //admin all route
 Route::controller(AdminController::class)->group(function (){
@@ -64,7 +70,13 @@ Route::get('/credit/customer/pdf', 'CreditCustomerPdf')->name('credit.customer.p
 Route::get('/customer/edit/invoice/{invoice_id}', 'CustomerEditInvoice')->name('customer.edit.invoice');
 Route::post('/customer/update/invoice/{invoice_id}', 'CustomerUpdateInvoice')->name('customer.update.invoice');
 Route::get('/customer/invoice/details/{invoice_id}', 'CustomerInvoiceDetails')->name('customer.invoice.details.pdf');
-
+Route::get('/paid/customer', 'PaidCustomer')->name('paid.customer');
+Route::get('/paid/customer/print/pdf', 'PaidPrintPdf')->name('paid.customer.print.pdf');
+Route::get('/customer/wise/report', 'CustomerWiseReport')->name('customer.wise.report');
+Route::get('/customer/wise/Credit/report', 'CustomerWiseCreditReport')->name('customer.wise.credit.report');
+Route::get('/customer/wise/Paid/report', 'CustomerWisePaidReport')->name('customer.wise.paid.report');
+Route::get('/customer/wise/Paid/pdf/gen', 'CustomerPdfGen')->name('customer.paid.pdf_gen');
+// Route::get('/customer/list',  'CustomerList')->name('customer.paid.pdf_gen'); 
 
 
 });

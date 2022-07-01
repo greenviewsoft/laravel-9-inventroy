@@ -8,12 +8,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Customer Credit Invoice Report</h4>
+                                    <h4 class="mb-sm-0">Customer Wise Credit  Report</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"> </a></li>
-                                            <li class="breadcrumb-item active">Customer Credit  Invoice Report</li>
+                                            <li class="breadcrumb-item active">Customer Credit  Report</li>
                                         </ol>
                                     </div>
 
@@ -32,7 +32,7 @@
             <div class="invoice-title">
 
                 <h3>
-                    <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo" height="24"/> GreenViewSoft
+                    <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo" height="24"/> Green View Soft
                 </h3>
             </div>
             <hr>
@@ -40,9 +40,9 @@
             <div class="row">
                 <div class="col-6 mt-4">
                     <address>
-                        <strong>GreenViewSoft</strong><br>
+                        <strong>Green View Soft</strong><br>
                         Mohammadpur Dhaka<br>
-                        support@GreenViewSoft.com
+                        support@Greenviewit.com
                     </address>
                 </div>
                 <div class="col-6 mt-4 text-end">
@@ -86,14 +86,10 @@
         @endphp
         @foreach($allData as $key => $item)
         <tr>
-
-      
             <td class="text-center"> {{ $key+1}} </td>
             <td class="text-center"> {{ $item['customer']['name'] }} </td> 
+            <td class="text-center"> #{{ $item['invoice']['invoice_no'] }}   </td> 
             <td class="text-center"> {{  date('d-m-Y',strtotime($item['invoice']['date'])) }} </td> 
-            @if(isset($item['invoice']['invoice_no']))          
-            <td class="text-center"> #{{ $item['invoice']['invoice_no'] }}</td>
-             @endif
             <td class="text-center"> {{ $item->due_amount }} </td> 
 
 
@@ -127,7 +123,7 @@
                     <div class="d-print-none">
                         <div class="float-end">
                             <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
-                            <a href="{{ url("/download-credit"); }}" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
+                            <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
                         </div>
                     </div>
                 </div>

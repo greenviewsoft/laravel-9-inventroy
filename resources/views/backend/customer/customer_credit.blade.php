@@ -47,9 +47,27 @@
                         	@foreach($allData as $key => $item)
                             <tr>
                                 <td> {{ $key+1}} </td>
-                                <td> {{ $item['customer']['name'] }} </td> 
+
+                                @if( ! empty($item->customer->name))
+                              
+                            @endif
+
+
+                                <td> {{ $item->customer->name ?? 'not found' }} </td> 
+
+                                @if(empty($item))
                                 <td> #{{ $item['invoice']['invoice_no'] }}   </td> 
+                                @else
+                                <p >no invoice no{{ $item->invoice_no }}</p>
+                            @endif
+
+                            @if(empty($item))
+
                                 <td> {{  date('d-m-Y',strtotime($item['invoice']['date'])) }} </td> 
+
+                                @else
+                                <p>no date</p>
+                            @endif
                                 <td> {{ $item->due_amount }} </td> 
                                 <td>
                                     <a href="{{ route('customer.edit.invoice',$item->invoice_id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
