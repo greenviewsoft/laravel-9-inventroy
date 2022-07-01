@@ -128,7 +128,7 @@ Route::controller(ProductController::class)->group(function () {
         Route::get('/purchase/approve/{id}', 'PurchaseApprove')->name('purchase.approve');
         Route::get('/daily/purchase/report', 'DailyPurchaseReport')->name('dailyPurchaseReport');
         Route::get('/daily/purchase/pdf', 'DailyPurchasePdf')->name('daily.purchase.pdf');
-
+        Route::get('/purchase/pdf/download', 'PurchasePdf')->name('Purchase.pdf');
 
     });
 
@@ -160,6 +160,8 @@ Route::controller(ProductController::class)->group(function () {
         Route::get('/stock/supplier/wise', 'stockSupplierWise')->name('stock.supplier.wise'); 
         Route::get('/stock/supplier/wise/pdf', 'stockSupplierWisePdf')->name('supplier.wise.report.pdf'); 
         Route::get('/product/wise/pdf', 'ProductWisePdf')->name('product.wise.pdf');
+        Route::get('/DownloadStock/stock/pdf', 'DownloadStock')->name('downloadStock.pdf');
+       
  
 
     });

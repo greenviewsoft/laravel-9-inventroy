@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Daily Purchase Report</h4>
+                                    <h4 class="mb-sm-0"> DAILY PURCHASE REPORT </h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
@@ -144,7 +144,7 @@
                     <div class="d-print-none">
                         <div class="float-end">
                             <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
-                            <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
+                            <a href="{{ route('Purchase.pdf') }}" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
                         </div>
                     </div>
                 </div>

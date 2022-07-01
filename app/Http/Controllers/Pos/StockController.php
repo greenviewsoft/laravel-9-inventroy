@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redis;
 use Whoops\Run;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class StockController extends Controller
 {
 
@@ -61,6 +61,26 @@ public function ProductWisePdf(Request $request){
     return view('backend.pdf.product_wise_report_pdf',compact('product'));
 
 }//end method
+
+
+
+
+    //PDF Download Part Developed By MD TIPU SULTAN
+    public function DownloadStock()
+    {
+
+        $data = [
+            'date' => date('m/d/Y'),
+
+        ];
+
+        $calldata2 = Product::orderBy('supplier_id','asc')->orderBy('category_id',
+        'asc')->get();
+       
+        $pdf = PDF::loadView('backend.downloadpdf.stock_pdf', compact('calldata2','data'));
+
+        return $pdf->download('stock.pdf');
+    } // end
 
 
 

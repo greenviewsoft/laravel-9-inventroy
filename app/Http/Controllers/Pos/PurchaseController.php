@@ -11,6 +11,7 @@ use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PurchaseController extends Controller
 {
@@ -132,5 +133,15 @@ return view('backend.pdf.daily_purchase_report_pdf', compact('allData', 'start_d
 
 }// End Method
 
+public function PurchasePdf(){
+    $data = [
+        'date' => date('m/d/Y'),
 
+    ];
+
+     $calldata = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+    $pdf = PDF::loadView('backend.downloadpdf.dailypurchase', compact('calldata','data'));
+
+    return $pdf->download('purchase.pdf');
+} // end
 }
