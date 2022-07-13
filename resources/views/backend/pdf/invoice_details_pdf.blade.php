@@ -77,7 +77,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- foreach ($order->lineItems as $line) or some such thing here -->
+        
         <tr>
             <td> {{ $payment['customer']['name'] }}</td>
             <td class="text-center">{{ $payment['customer']['mobile_no']  }}</td>
@@ -121,7 +121,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- foreach ($order->lineItems as $line) or some such thing here -->
+    
 
       @php
         $total_sum = '0';

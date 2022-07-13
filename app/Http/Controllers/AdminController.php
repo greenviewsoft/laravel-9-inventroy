@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Customer;
+use App\Models\payment;
+use App\Models\PaymentDetail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 
 class AdminController extends Controller
@@ -104,6 +108,10 @@ if (Hash::check($request->oldpassword,$hashedPassword )) {
 
 
 }// End Method
+
+
+
+
 
 
 }

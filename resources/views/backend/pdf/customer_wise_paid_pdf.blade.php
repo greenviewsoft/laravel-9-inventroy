@@ -83,7 +83,6 @@
         </tr>
         </thead>
         <tbody>
-        <!-- foreach ($order->lineItems as $line) or some such thing here -->
         @php
         $total_due = '0';
         @endphp
@@ -96,7 +95,6 @@
         <td class="text-center"> {{ $item->due_amount }} </td> 
         <td class="text-center"> {{ $item->paid_amount }}   </td> 
         <td class="text-center"> {{ $item->total_amount }}   </td> 
-
         </tr>
          @php
         $total_due += $item->due_amount;
@@ -112,7 +110,7 @@
                 <td class="no-line"></td>
                 <td class="no-line text-center">
                     <strong>Grand Due Total</strong></td>
-                <td class="no-line text-end"><h4 class="m-0">৳ {{ $total_due}}</h4></td>
+                <td class="no-line text-end"><h4 class="m-0"> {{ $total_due}}</h4></td>
             </tr>
                             </tbody>
                         </table>

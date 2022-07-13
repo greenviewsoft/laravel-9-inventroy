@@ -26,7 +26,7 @@ public function CustomerAll(){
 // $customers = Customer::all();
 
 // All Customer List Data 
-$customers = Customer::latest()->get();
+ $customers = Customer::latest()->get();
 
 return view('backend.customer.customer_all',compact('customers'));
 
@@ -301,6 +301,11 @@ public function CustomerWisePaidReport(Request $request){
 
 
 
+
+public function Index2(){
+   
+   return view('admin.index');
+}// End Method
 
 
 

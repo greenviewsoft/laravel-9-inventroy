@@ -39,6 +39,7 @@ Route::get('/change/password', 'ChangePassword')->name('change.password');
 Route::post('/update/password', 'UpdatePassword')->name('update.password');
 
 
+
 });
 
 
@@ -76,6 +77,12 @@ Route::get('/customer/wise/report', 'CustomerWiseReport')->name('customer.wise.r
 Route::get('/customer/wise/Credit/report', 'CustomerWiseCreditReport')->name('customer.wise.credit.report');
 Route::get('/customer/wise/Paid/report', 'CustomerWisePaidReport')->name('customer.wise.paid.report');
 Route::get('/customer/wise/Paid/pdf/gen', 'CustomerPdfGen')->name('customer.paid.pdf_gen');
+Route::get('/customer/index', 'CustomerIndex')->name('customer.index');
+
+
+// ----------------------------- home dashboard ------------------------------//
+Route::get('/dashboard', 'Index2');
+
 // Route::get('/customer/list',  'CustomerList')->name('customer.paid.pdf_gen'); 
 
 
@@ -184,8 +191,8 @@ Route::controller(ProductController::class)->group(function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('admin.index');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

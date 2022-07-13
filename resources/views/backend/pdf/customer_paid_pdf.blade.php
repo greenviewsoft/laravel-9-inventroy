@@ -113,7 +113,7 @@
                 <td class="no-line"></td>
                 <td class="no-line text-center">
                     <strong>Grand Due Total</strong></td>
-                <td class="no-line text-end"><h4 class="m-0">৳ {{ $total_due}}</h4></td>
+                <td class="no-line text-end"><h4 class="m-0">{{ $total_due}}</h4></td>
             </tr>
                             </tbody>
                         </table>

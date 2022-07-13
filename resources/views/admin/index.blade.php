@@ -13,7 +13,7 @@
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Upcube</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">GreenViewSoft</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
@@ -23,6 +23,7 @@
             </div>
             <!-- end page title -->
 
+
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card">
@@ -30,7 +31,8 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-truncate font-size-14 mb-2">Total Customer</p>
-                                    <h4 class="mb-2">{{ 1452 }}</h4>
+                                    <?php  $CustomerCount=DB::table('customers')->count(); ?>
+                                    <h4 class="mb-2">{{ $CustomerCount }}</h4>
                                     <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
                                 </div>
                                 <div class="avatar-sm">
@@ -47,8 +49,9 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Todays Sell</p>
-                                    <h4 class="mb-2">938</h4>
+                                    <p class="text-truncate font-size-14 mb-2">Total Sell</p>
+                                    <?php  $totalsell=DB::table('payments')->count(); ?>
+                                    <h4 class="mb-2">{{ $totalsell }}</h4>
                                     <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"><i class="ri-arrow-right-down-line me-1 align-middle"></i>1.09%</span>from previous period</p>
                                 </div>
                                 <div class="avatar-sm">
@@ -65,8 +68,16 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Total Sell</p>
-                                    <h4 class="mb-2">8246</h4>
+                                    <p class="text-truncate font-size-14 mb-2">Total Sell Amount</p>
+                                    
+                                    <?php $mysum= App\Models\payment::sum('total_amount');
+                                    ?>
+
+
+                                
+
+                                  
+                                    <h4 class="mb-2">{{ $mysum }}</h4>
                                     <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from previous period</p>
                                 </div>
                                 <div class="avatar-sm">
@@ -84,7 +95,10 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <p class="text-truncate font-size-14 mb-2">Total Due</p>
-                                    <h4 class="mb-2">29670</h4>
+                                    <?php $mysum2=App\Models\payment::sum('due_amount');
+  
+                                    ?>
+                                    <h4 class="mb-2">{{ $mysum2 }}</h4>
                                     <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from previous period</p>
                                 </div>
                                 <div class="avatar-sm">
@@ -116,120 +130,52 @@
                                 <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                     <thead class="table-light">
                                         <tr>
+                                            <td><strong>Sl </strong></td>
                                             <th>Customer Name</th>
                                             <th>Product Name</th>
+                                            <th>Invoice No</th>
+                                            <th> Date</th>
                                             <th>Paid Amount</th>
                                             <th>Due Amount</th>
-                                            <th> date</th>
+                                        
                                             <th style="width: 120px;">Total Amount</th>
                                         </tr>
                                     </thead><!-- end thead -->
                                     <tbody>
+                                        @php
+    
+
+$invoice_details = App\Models\InvoiceDetail::get();
+
+        @endphp
+        
+                                        @foreach($invoice_details as $key => $details)
                                         <tr>
-                                            <td><h6 class="mb-0">Charles Casey</h6></td>
-                                            <td>Web Developer</td>
+                                            <td class="text-center"> {{ $key+1}} </td>
+
+                                            <td class="text-center"></td>
+
+
+                                            <td>Produt Name</td>
                                             <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
+                                                <div class="font-size-13"><i class=" font-size-10 text-success align-middle me-2"></i>{{  date('d-m-Y',strtotime( $details['date'])) }}</div>
                                             </td>
-                                            <td>
-                                                23
-                                            </td>
-                                            <td>
-                                                04 Apr, 2021
-                                            </td>
-                                            <td>$42,450</td>
+                                           
+                                                <td class="text-center"> <p> test </p> </td> 
+
+                                                
+                                                <td class="text-center"> <p> test 3</p> </td> 
+
+
+                                                <td class="text-center"> <p>hrllo</p> </td> 
+                                                <td class="text-center"> <p>Total  Amount</p> </td> 
                                         </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Alex Adams</h6></td>
-                                            <td>Python Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div>
-                                            </td>
-                                            <td>
-                                                28
-                                            </td>
-                                            <td>
-                                                01 Aug, 2021
-                                            </td>
-                                            <td>$25,060</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Prezy Kelsey</h6></td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                35
-                                            </td>
-                                            <td>
-                                                15 Jun, 2021
-                                            </td>
-                                            <td>$59,350</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Ruhi Fancher</h6></td>
-                                            <td>React Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                25
-                                            </td>
-                                            <td>
-                                                01 March, 2021
-                                            </td>
-                                            <td>$23,700</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Juliet Pineda</h6></td>
-                                            <td>Senior Web Designer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                38
-                                            </td>
-                                            <td>
-                                                01 Jan, 2021
-                                            </td>
-                                            <td>$69,185</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Den Simpson</h6></td>
-                                            <td>Web Designer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div>
-                                            </td>
-                                            <td>
-                                                21
-                                            </td>
-                                            <td>
-                                                01 Sep, 2021
-                                            </td>
-                                            <td>$37,845</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Mahek Torres</h6></td>
-                                            <td>Senior Laravel Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                32
-                                            </td>
-                                            <td>
-                                                20 May, 2021
-                                            </td>
-                                            <td>$55,100</td>
-                                        </tr>
-                                         <!-- end -->
+                                        @endforeach
+                                        
+                                        
+                                        
+                                        
+                                       
                                     </tbody><!-- end tbody -->
                                 </table> <!-- end table -->
                             </div>
