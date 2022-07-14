@@ -4,10 +4,10 @@
     <head>
         
         <meta charset="utf-8" />
-        <title>Dashboard | Green View IT</title>
+        <title>Dashboard | Green View Soft</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium  Green View IT" name="description" />
-        <meta content="Themesdesign" name="author" />
+        <meta content="  Green View Soft" name="description" />
+        <meta content="GreenViewSoft" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}">
 

@@ -303,8 +303,10 @@ public function CustomerWisePaidReport(Request $request){
 
 
 public function Index2(){
+    $allData5 = Payment::where('paid_status','!=' ,'full_due')->latest()->get();
+   return view('admin.index',compact('allData5'));
+
    
-   return view('admin.index');
 }// End Method
 
 

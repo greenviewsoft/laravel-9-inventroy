@@ -131,13 +131,11 @@
                                     <thead class="table-light">
                                         <tr>
                                             <td><strong>Sl </strong></td>
-                                            <th>Customer Name</th>
-                                            <th>Product Name</th>
-                                            <th>Invoice No</th>
-                                            <th> Date</th>
-                                            <th>Paid Amount</th>
-                                            <th>Due Amount</th>
-                                        
+                                            <th class="text-center">Customer Name</th>
+                                            <th class="text-center">Invoice No</th>
+                                            <th class="text-center"> Date</th>
+                                            <th class="text-center">Paid Amount</th>
+                                            <th class="text-center"> Due Amount </th>
                                             <th style="width: 120px;">Total Amount</th>
                                         </tr>
                                     </thead><!-- end thead -->
@@ -145,30 +143,21 @@
                                         @php
     
 
-$invoice_details = App\Models\InvoiceDetail::get();
+// $invoice_details = App\Models\InvoiceDetail::get();
 
         @endphp
         
-                                        @foreach($invoice_details as $key => $details)
+                                        @foreach( $allData5 as $key => $item )
                                         <tr>
                                             <td class="text-center"> {{ $key+1}} </td>
-
-                                            <td class="text-center"></td>
-
-
-                                            <td>Produt Name</td>
-                                            <td>
-                                                <div class="font-size-13"><i class=" font-size-10 text-success align-middle me-2"></i>{{  date('d-m-Y',strtotime( $details['date'])) }}</div>
-                                            </td>
-                                           
-                                                <td class="text-center"> <p> test </p> </td> 
-
-                                                
-                                                <td class="text-center"> <p> test 3</p> </td> 
+                                            <td class="text-center"> {{ $item['customer']['name'] }} </td> 
+                                            <td class="text-center"> #{{ $item['invoice']['invoice_no'] }}   </td> 
+                                            <td class="text-center"> {{  date('d-m-Y',strtotime($item['invoice']['date'])) }} </td> 
+                                            <td class="text-center"> {{ $item->paid_amount }} </td> 
 
 
-                                                <td class="text-center"> <p>hrllo</p> </td> 
-                                                <td class="text-center"> <p>Total  Amount</p> </td> 
+                                            <td class="text-center"> {{ $item->due_amount }} </td> 
+                                                <td class="text-center"> <p>{{ $item->total_amount }}</p> </td> 
                                         </tr>
                                         @endforeach
                                         
@@ -195,7 +184,7 @@ $invoice_details = App\Models\InvoiceDetail::get();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Upcube.
+                    <script>document.write(new Date().getFullYear())</script> © GreenViewSoft.
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">
